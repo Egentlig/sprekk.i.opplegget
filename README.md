@@ -1,2 +1,2 @@
-# sprekk.i.opplegget
+# sprekk.opplegget.no
 Opplegg

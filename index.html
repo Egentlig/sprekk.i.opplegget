@@ -82,6 +82,10 @@
             // get total seconds between the times
             var delta = Math.abs(scratch - now) / 1000;
 
+            // calculate (and subtract) whole months
+            var months = Math.floor(delta / 2629746);
+            delta -= months * 2629746;
+
             // calculate (and subtract) whole days
             var days = Math.floor(delta / 86400);
             delta -= days * 86400;
@@ -97,7 +101,7 @@
             // what's left is seconds
             var seconds = Math.floor(delta % 60);  // in theory the modulus is not required
 
-            timerText.innerText = `Sprekken har vært der i ${days} dager, ${hours} timer, ${minutes} minutter og ${seconds} sekunder`;
+            timerText.innerText = `Sprekken har vært der i ${months} måned${months !== 1 ? "er" : ""}, ${days} dag${days !== 1 ? "er" : ""}, ${hours} tim${hours !== 1 ? "er" : ""}, ${minutes} minutt${minutes !== 1 ? "er" : ""} og ${seconds} sekund${seconds !== 1 ? "er" : ""}`;
             timerWrapper.classList.remove("hide");
         }, 1000);
     });
